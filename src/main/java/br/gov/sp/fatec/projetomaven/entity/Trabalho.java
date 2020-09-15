@@ -6,23 +6,19 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-@Table(name = "tra_trabalho", schema = "avaliacao")
-@Entity
-public class Trabalho {
+import br.gov.sp.fatec.projetomaven.entity.common.AutoId;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "tra_id")
-	private Long id;
+@Entity
+@Table(name = "tra_trabalho", schema = "avaliacao")
+@PrimaryKeyJoinColumn(name = "tra_id")
+public class Trabalho extends AutoId {
 	
 	@Column(name = "tra_titulo")
 	private String titulo;
@@ -42,14 +38,6 @@ public class Trabalho {
 		joinColumns = { @JoinColumn(name = "tra_id") },
 		inverseJoinColumns = { @JoinColumn(name = "alu_id") })
 	private Set<Aluno> alunos;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getTitulo() {
 		return titulo;
@@ -94,11 +82,10 @@ public class Trabalho {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((alunos == null) ? 0 : alunos.hashCode());
 		result = prime * result + ((avaliador == null) ? 0 : avaliador.hashCode());
 		result = prime * result + ((dataHoraEntrega == null) ? 0 : dataHoraEntrega.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((localArquivo == null) ? 0 : localArquivo.hashCode());
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
@@ -108,7 +95,7 @@ public class Trabalho {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -128,11 +115,6 @@ public class Trabalho {
 				return false;
 		} else if (!dataHoraEntrega.equals(other.dataHoraEntrega))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
 		if (localArquivo == null) {
 			if (other.localArquivo != null)
 				return false;
@@ -148,8 +130,8 @@ public class Trabalho {
 
 	@Override
 	public String toString() {
-		return "Trabalho [id=" + id + ", titulo=" + titulo + ", dataHoraEntrega=" + dataHoraEntrega + ", localArquivo="
-				+ localArquivo + ", avaliador=" + avaliador + ", alunos=" + alunos + "]";
+		return "Trabalho [titulo=" + titulo + ", dataHoraEntrega=" + dataHoraEntrega + ", localArquivo=" + localArquivo
+				+ ", avaliador=" + avaliador + ", alunos=" + alunos + "]";
 	}
 
 }

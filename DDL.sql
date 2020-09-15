@@ -87,3 +87,7 @@ create table amb_ambiente (
 	constraint amb_pro_responsavel_fk foreign key (pro_responsavel_id)
     	references pro_professor (pro_id)
 );
+
+create table aut_auto_id (
+  aut_id bigint unsigned PRIMARY KEY auto_increment
+);

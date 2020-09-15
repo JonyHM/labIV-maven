@@ -4,20 +4,16 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+import br.gov.sp.fatec.projetomaven.entity.common.AutoId;
 
 @MappedSuperclass
-public class Evento {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "eve_id")
-	private Long id;
+@PrimaryKeyJoinColumn(name = "eve_id")
+public class Evento extends AutoId {
 	
 	@Column(name = "eve_titulo")
 	private String titulo;
@@ -31,14 +27,6 @@ public class Evento {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "pro_organizador_id")
 	private Professor organizador;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getTitulo() {
 		return titulo;
@@ -75,9 +63,8 @@ public class Evento {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((dataHoraAgendamento == null) ? 0 : dataHoraAgendamento.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((local == null) ? 0 : local.hashCode());
 		result = prime * result + ((organizador == null) ? 0 : organizador.hashCode());
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
@@ -88,7 +75,7 @@ public class Evento {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -97,11 +84,6 @@ public class Evento {
 			if (other.dataHoraAgendamento != null)
 				return false;
 		} else if (!dataHoraAgendamento.equals(other.dataHoraAgendamento))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
 			return false;
 		if (local == null) {
 			if (other.local != null)
@@ -123,8 +105,8 @@ public class Evento {
 
 	@Override
 	public String toString() {
-		return "Evento [id=" + id + ", titulo=" + titulo + ", local=" + local + ", dataHoraAgendamento="
-				+ dataHoraAgendamento + ", organizador=" + organizador + "]";
+		return "Evento [titulo=" + titulo + ", local=" + local + ", dataHoraAgendamento=" + dataHoraAgendamento
+				+ ", organizador=" + organizador + "]";
 	}
-	
+
 }
