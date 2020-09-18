@@ -4,12 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "aca_academico")
-@PrimaryKeyJoinColumn(name = "eve_id")
 public class Academico extends Evento {
 
 	@Column(name = "aca_cursos")

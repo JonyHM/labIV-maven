@@ -10,14 +10,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import br.gov.sp.fatec.projetomaven.entity.common.AutoId;
 
 @Entity
-@Table(name = "tra_trabalho", schema = "avaliacao")
-@PrimaryKeyJoinColumn(name = "tra_id")
+@Table(name = "tra_trabalho")
 public class Trabalho extends AutoId {
 	
 	@Column(name = "tra_titulo")

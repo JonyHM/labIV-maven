@@ -4,14 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import br.gov.sp.fatec.projetomaven.entity.common.AutoId;
 
 @Entity
 @Table(name = "usu_usuario")
-@PrimaryKeyJoinColumn(name = "usu_id")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Usuario extends AutoId {
 	

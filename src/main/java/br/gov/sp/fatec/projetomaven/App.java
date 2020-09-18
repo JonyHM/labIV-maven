@@ -31,8 +31,8 @@ public class App {
     	
     	EntityManager em = PersistenceManager.getInstance().getEntityManager();
     	
-    	Aluno aluno = new Aluno("aluno5", "senha", 321654781558L);
-    	Professor professor = new Professor("professor5", "senha");
+    	Aluno aluno = new Aluno("aluno", "senha", 321654781558L);
+    	Professor professor = new Professor("professor", "senha");
     	
     	Set<Aluno> alunos = new HashSet<Aluno>();
     	alunos.add(aluno);
@@ -41,15 +41,15 @@ public class App {
     	trabalho.setDataHoraEntrega(new Date());
     	trabalho.setAlunos(alunos);
     	trabalho.setAvaliador(professor);
-    	trabalho.setTitulo("Trabalho Jpa 5");
-    	trabalho.setLocalArquivo("D:\\workspace\\projeto-maven\\jpa5.pdf");
+    	trabalho.setTitulo("Trabalho Jpa 1");
+    	trabalho.setLocalArquivo("D:\\workspace\\projeto-maven\\jpa1.pdf");
     	
     	TrabalhoDao trabalhoDao = new TrabalhoDaoJpa(em);
     	
     	trabalhoDao.salvarTrabalho(trabalho);
     	
     	Trabalho t2 = trabalhoDao.buscarTrabalhoPorNomeAvaliadorETitulo(professor.getNomeUsuario(), 
-    			"Trabalho Jpa 5");
+    			"Trabalho Jpa 1");
     	
     	System.out.println(t2.getLocalArquivo());
     	System.out.println(t2.getDataHoraEntrega());

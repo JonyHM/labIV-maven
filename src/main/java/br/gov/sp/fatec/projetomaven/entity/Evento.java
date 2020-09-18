@@ -7,12 +7,10 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 import br.gov.sp.fatec.projetomaven.entity.common.AutoId;
 
 @MappedSuperclass
-@PrimaryKeyJoinColumn(name = "eve_id")
 public class Evento extends AutoId {
 	
 	@Column(name = "eve_titulo")

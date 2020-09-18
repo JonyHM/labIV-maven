@@ -1,22 +1,17 @@
 package br.gov.sp.fatec.projetomaven.entity.common;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-@Table(name = "aut_auto_id")
-@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class AutoId {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "aut_id")
+	@Column(name = "id")
 	private Long id;
 
 	public Long getId() {
