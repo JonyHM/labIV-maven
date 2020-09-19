@@ -3,6 +3,7 @@ package br.gov.sp.fatec.projetomaven.entity;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +17,7 @@ import br.gov.sp.fatec.projetomaven.entity.common.AutoId;
 
 @Entity
 @Table(name = "tra_trabalho")
+@AttributeOverride(name = "id", column = @Column(name = "tra_id"))
 public class Trabalho extends AutoId {
 	
 	@Column(name = "tra_titulo")

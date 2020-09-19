@@ -4,10 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "des_desportivo")
+@PrimaryKeyJoinColumn(name = "des_id")
 public class Desportivo extends Evento {
 
 	@Column(name = "des_equipes")

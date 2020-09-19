@@ -1,5 +1,6 @@
 package br.gov.sp.fatec.projetomaven.entity;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -11,6 +12,7 @@ import br.gov.sp.fatec.projetomaven.entity.common.AutoId;
 @Entity
 @Table(name = "usu_usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
+@AttributeOverride(name = "id", column = @Column(name = "usu_id"))
 public abstract class Usuario extends AutoId {
 	
 	@Column(name = "usu_nome_usuario")

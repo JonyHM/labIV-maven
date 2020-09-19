@@ -2,15 +2,22 @@ package br.gov.sp.fatec.projetomaven.entity;
 
 import java.util.Date;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
 
 import br.gov.sp.fatec.projetomaven.entity.common.AutoId;
 
-@MappedSuperclass
+@Entity
+@Table(name = "eve_evento")
+@Inheritance(strategy = InheritanceType.JOINED)
+@AttributeOverride(name = "id", column = @Column(name = "eve_id"))
 public class Evento extends AutoId {
 	
 	@Column(name = "eve_titulo")

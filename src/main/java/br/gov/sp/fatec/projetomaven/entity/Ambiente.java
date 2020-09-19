@@ -1,5 +1,6 @@
 package br.gov.sp.fatec.projetomaven.entity;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -18,6 +19,7 @@ import br.gov.sp.fatec.projetomaven.entity.common.AutoId;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="amb_tipo_ambiente", 
 	discriminatorType = DiscriminatorType.INTEGER)
+@AttributeOverride(name = "id", column = @Column(name = "amb_id"))
 public class Ambiente extends AutoId {
 	
 	@Column(name = "amb_tamanho")

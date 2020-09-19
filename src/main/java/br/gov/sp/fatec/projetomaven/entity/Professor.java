@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "pro_professor", schema = "avaliacao")
+@Table(name = "pro_professor")
 @PrimaryKeyJoinColumn(name = "pro_id")
 public class Professor extends Usuario {
 	
