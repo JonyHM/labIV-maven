@@ -21,6 +21,12 @@ public class Professor extends Usuario {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avaliador")
 	private Set<Trabalho> trabalhosAvaliados;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "organizador")
+	private Set<Evento> eventosOrganizados;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "responsavel")
+	private Set<Ambiente> ambientesSobResponsabilidade;
+	
 	public Professor() {}
 	
 	public Professor(String nomeUsuario, String senha) {
@@ -40,6 +46,9 @@ public class Professor extends Usuario {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
+		result = prime * result
+				+ ((ambientesSobResponsabilidade == null) ? 0 : ambientesSobResponsabilidade.hashCode());
+		result = prime * result + ((eventosOrganizados == null) ? 0 : eventosOrganizados.hashCode());
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		result = prime * result + ((trabalhosAvaliados == null) ? 0 : trabalhosAvaliados.hashCode());
 		return result;
@@ -54,6 +63,16 @@ public class Professor extends Usuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Professor other = (Professor) obj;
+		if (ambientesSobResponsabilidade == null) {
+			if (other.ambientesSobResponsabilidade != null)
+				return false;
+		} else if (!ambientesSobResponsabilidade.equals(other.ambientesSobResponsabilidade))
+			return false;
+		if (eventosOrganizados == null) {
+			if (other.eventosOrganizados != null)
+				return false;
+		} else if (!eventosOrganizados.equals(other.eventosOrganizados))
+			return false;
 		if (titulo == null) {
 			if (other.titulo != null)
 				return false;
@@ -69,6 +88,8 @@ public class Professor extends Usuario {
 
 	@Override
 	public String toString() {
-		return "Professor [" + super.toString() + ", titulo=" + titulo + "]";
+		return "Professor [titulo=" + titulo + ", trabalhosAvaliados=" + trabalhosAvaliados + ", eventosOrganizados="
+				+ eventosOrganizados + ", ambientesSobResponsabilidade=" + ambientesSobResponsabilidade + "]";
 	}
+
 }
